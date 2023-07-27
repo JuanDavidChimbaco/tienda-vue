@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" :class="{ 'navbar-scrolled': scrolled }">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="../assets/Logo1.png" alt="Logo" class="logo" />
@@ -64,25 +64,14 @@
 
           <form
             class="dropdown-menu p-4 dropdown-menu-right dropdown-menu-clickable"
-            @click="stopPropagation"
-          >
+            @click="stopPropagation">
             <div class="mb-3">
               <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
-              <input
-                type="email"
-                class="form-control"
-                id="exampleDropdownFormEmail2"
-                placeholder="email@example.com"
-              />
+              <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com"/>
             </div>
             <div class="mb-3">
               <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="exampleDropdownFormPassword2"
-                placeholder="Password"
-              />
+              <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password" />
             </div>
             <div class="mb-3">
               <div class="form-check">
@@ -95,37 +84,30 @@
         </div>
 
         <div class="mx-2">
-          <button class="btn btn-outline-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+          <button class="btn btn-outline-dark" @click="toggleComponent">
             <i class="fas fa-regular fa-cart-shopping fa-2xl"></i>
           </button>
         </div>
-
-        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
-              <i class="fas fa-regular fa-cart-shopping fa-2xl"></i>
-            </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <CartComponent></CartComponent>
-          </div>
-        </div>
-
       </div>
     </div>
   </nav>
+
+  <div v-if="showComponent">
+    <CartComponent />
+  </div>
+  
 </template>
   
 <script>
 import axios from "axios";
+import { ref } from 'vue';
 import CartComponent from "/src/components/CartComponent.vue";
-
 //de nada xD
 
 export default {
   data() {
     return {
+      scrolled: false,
       dropdownOpen: false,
       categories: [],
     };
@@ -135,6 +117,7 @@ export default {
   },
   mounted() {
     this.fetchCategories();
+    window.addEventListener("scroll", this.handleScroll);
   },
   methods: {
     fetchCategories() {
@@ -147,6 +130,10 @@ export default {
         .catch((error) => {
           console.error(error);
         });
+    },
+    handleScroll() {
+      // Verificamos la posición de desplazamiento vertical
+      this.scrolled = window.scrollY > 0;
     },
     toggleDropdown() {
       this.dropdownOpen = !this.dropdownOpen;
@@ -161,6 +148,18 @@ export default {
       event.stopPropagation();
     },
   },
+  setup() {
+    const showComponent = ref(false);
+
+    function toggleComponent() {
+      showComponent.value = !showComponent.value;
+    }
+
+    return {
+      showComponent,
+      toggleComponent,
+    };
+  },
 };
 </script>
   
@@ -173,9 +172,23 @@ export default {
   max-height: auto; /* Ajusta el valor según la preferencia */
   overflow-y: auto;
 }
-
 .container-fluid{
   background: rgb(253 196 255);
+}
+/* Estilo para el navbar cuando se desplaza */
+/* Estilo para el navbar cuando se desplaza */
+.navbar-scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #f9f9f9; /* Agrega el color de fondo que desees */
+  /* Agrega cualquier otro estilo deseado para el navbar cuando se desplaza */
+}
+
+/* Estilos para el contenedor del contenido de la página */
+.container {
+  margin-top: 70px; /* Ajusta este valor para dejar espacio para el navbar */
 }
 </style>
   

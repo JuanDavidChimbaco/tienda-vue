@@ -1,11 +1,4 @@
-import { defineConfig } from '@vue/cli-service';
-export default defineConfig({
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
   transpileDependencies: true
 })
-
-export const configureWebpack = {
-  resolve: {
-    // Opción para excluir el elemento "marquee" del proceso de resolución de componentes
-    isCustomElement: tag => tag === 'marquee'
-  }
-};

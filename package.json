@@ -11,11 +11,12 @@
     "@coreui/bootstrap-vue": "^1.0.0-beta.0",
     "@fortawesome/fontawesome-free": "^6.4.0",
     "axios": "^1.4.0",
-    "bootstrap": "^5.3.0",
+    "bootstrap": "^5.3.1",
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.8.3",
-    "coreui": "^0.1.5",
-    "vue": "^3.2.13"
+    "coreui": "^0.1.0",
+    "vue": "^3.2.13",
+    "vue-cli": "^2.9.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

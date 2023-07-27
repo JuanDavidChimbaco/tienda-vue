@@ -10,7 +10,7 @@
         </div>
       </div>
     </main>
-
+    
     <FooterComponent/>
   </div>
 </template>
@@ -20,6 +20,7 @@ import HeaderComponent from './components/HeaderComponent.vue';
 import NavigationComponent from './components/NavigationComponent.vue';
 import ProductCard from './components/ProductCard.vue';
 import FooterComponent from './components/FooterComponent.vue';
+
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
