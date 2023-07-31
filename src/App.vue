@@ -6,7 +6,10 @@
     <main>
       <div class="container-fluid">
         <div class="row">
+          <CarouselComponent/>
           <ProductCard />
+          <CarouselProducts/>
+          <ComentariosComponent/>
         </div>
       </div>
     </main>
@@ -20,6 +23,10 @@ import HeaderComponent from './components/HeaderComponent.vue';
 import NavigationComponent from './components/NavigationComponent.vue';
 import ProductCard from './components/ProductCard.vue';
 import FooterComponent from './components/FooterComponent.vue';
+import CarouselComponent from './components/CarouselComponent.vue'
+import CarouselProducts from './components/CarouselProducts.vue';
+import ComentariosComponent from './components/ComentariosComponent.vue'
+
 
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -33,6 +40,9 @@ export default {
     NavigationComponent,
     ProductCard,
     FooterComponent,
+    CarouselComponent,
+    CarouselProducts,
+    ComentariosComponent,
   },
 }
 </script>

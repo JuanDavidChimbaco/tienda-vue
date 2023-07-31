@@ -16,6 +16,7 @@
     "core-js": "^3.8.3",
     "coreui": "^0.1.0",
     "vue": "^3.2.13",
+    "vue-carousel": "^0.18.0",
     "vue-cli": "^2.9.6"
   },
   "devDependencies": {

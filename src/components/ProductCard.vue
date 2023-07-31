@@ -66,6 +66,7 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .foto {
   height: 200px;
@@ -76,14 +77,15 @@ export default {
 
 .card {
   transition: transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Elevación y sombra */
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Elevación y sombra al hacer hover */
 }
 
-button{
+button {
   margin: 5px;
 }
 </style>
