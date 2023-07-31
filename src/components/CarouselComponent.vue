@@ -44,13 +44,13 @@
         currentSlide: 0,
         slides: [
           {
-            image: "https://via.placeholder.com/800x400?text=Slide+1",
+            image: "https://images.vexels.com/media/users/3/195907/raw/737ef4353c5b1055ddfe4f08bd50b8be-tienda-online-german-web-slider.jpg",
           },
           {
-            image: "https://via.placeholder.com/800x400?text=Slide+2",
+            image: "https://images.vexels.com/media/users/3/194733/raw/09e8c94ee143ff718334f2ddc0ecd330-compra-online-deslizador-web-de-neon.jpg",
           },
           {
-            image: "https://via.placeholder.com/800x400?text=Slide+3",
+            image: "https://images.vexels.com/media/users/3/196481/raw/180e3280e0efdd4f24ac7e27688d1374-plantilla-de-control-deslizante-en-linea-de-mega-venta.jpg",
           },
         ],
       };

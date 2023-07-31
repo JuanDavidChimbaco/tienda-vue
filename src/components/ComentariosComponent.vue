@@ -43,4 +43,12 @@ export default {
     },
 };
 </script>
+<style>
+    .card {
+        border-radius: 1rem;
+    }
+    body {
+        background-color: #f8f9fa;
+    }
+</style>
   

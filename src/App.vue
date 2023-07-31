@@ -60,5 +60,6 @@ html, body {
 
 main {
   flex: 1;
+  background-color: #eeeeee;
 }
 </style>
