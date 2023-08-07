@@ -65,23 +65,18 @@
         </div>
 
         <div class="mx-2">
-          <button class="btn btn-outline-dark" @click="toggleComponent">
-            <i class="fas fa-regular fa-cart-shopping fa-2xl"></i>
-          </button>
+         
         </div>
       </div>
     </div>
   </nav>
 
-  <div v-if="showComponent">
-    <CartComponent />
-  </div>
+  <carrito ref="CartComponent"></carrito>
 </template>
 
 <script>
 import axios from "axios";
 import { ref } from 'vue';
-import CartComponent from "/src/components/CartComponent.vue";
 
 export default {
   data() {
@@ -90,16 +85,13 @@ export default {
       categories: [],
     };
   },
-  components: {
-    CartComponent,
-  },
   mounted() {
     this.fetchCategories();
   },
   methods: {
     fetchCategories() {
       axios
-        .get("http://127.0.0.1:8000/api/v1.0/categorias")
+        .get("http://exoticshoes.pythonanywhere.com/api/v1.0/categorias")
         .then((response) => {
           console.log(response.data);
           this.categories = response.data;
@@ -108,7 +100,6 @@ export default {
           console.error(error);
         });
     },
-
     toggleDropdown() {
       this.dropdownOpen = !this.dropdownOpen;
     },

@@ -49,7 +49,7 @@ export default {
     methods: {
         fetchProducts() {
             axios
-                .get("http://127.0.0.1:8000/api/v1.0/productos")
+                .get("http://exoticshoes.pythonanywhere.com/api/v1.0/productos")
                 .then((response) => {
                     this.products = response.data;
                     console.log(response.data);

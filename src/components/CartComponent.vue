@@ -1,62 +1,53 @@
 <template>
-  <div>
-    <div class="cart-container">
-      <div class="cart-content">
-        <!-- Contenido del Carrito -->
-        <h2 class="cart-title">Carrito de compras</h2>
-        <!-- Agrega aquí el contenido del carrito de compras -->
-      </div>
-    </div>
+  <div class="carrito">
+    <h2>Carrito de Compras</h2>
+    <ul>
+      <li v-for="producto in productos" :key="producto.id">
+        {{ producto.nombre }} - ${{ producto.precio }}
+        <button @click="eliminarProducto(producto.id)">Eliminar</button>
+      </li>
+    </ul>
+    <p>Total: ${{ calcularTotal() }}</p>
   </div>
 </template>
 
 <script>
-
+export default {
+  data() {
+    return {
+      productos: [], // Lista de productos agregados al carrito
+    };
+  },
+  methods: {
+    agregarProducto(producto) {
+      this.productos.push(producto);
+    },
+    eliminarProducto(idProducto) {
+      this.productos = this.productos.filter((producto) => producto.id !== idProducto);
+    },
+    calcularTotal() {
+      return this.productos.reduce((total, producto) => total + producto.precio, 0);
+    },
+  },
+};
 </script>
 
 <style>
-/* Estilos para el carrito de compras */
-.cart-container {
-  background-color: #ff0000;
-  border: 1px solid #5e5e5e;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  margin: 0 auto;
+/* Estilos para el carrito */
+.carrito {
   position: fixed;
   top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999; /* Para que esté encima de todo */
-  display: none; /* Oculto por defecto */
+  right: -400px; /* Inicialmente, el carrito estará oculto fuera de la pantalla */
+  width: 400px;
+  height: 100%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  transition: right 0.3s ease; /* Agregamos una transición suave para animar la aparición/desaparición del carrito */
 }
 
-.cart-container.visible {
-  display: block; /* Mostrar cuando showComponent sea true */
-}
-
-.cart-title {
-  text-align: center;
-  color: #333;
-}
-
-.cart-content {
-  margin-top: 20px;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-/* Estilos para el botón de cerrar */
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  background: none;
-  border: none;
+.carrito.mostrar {
+  right: 0; /* Cuando la clase "mostrar" está presente, el carrito se desplaza hacia la posición derecha 0 */
 }
 </style>
-  
+

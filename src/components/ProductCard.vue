@@ -16,7 +16,7 @@
             <h5 class="card-title">{{ product.nombre }}</h5>
             <p class="card-text">{{ product.descripcion }}</p>
             <p class="card-text">Precio: ${{ product.precio }}</p>
-            <button class="btn btn-primary" @click="addToCart(product)">
+            <button class="btn btn-primary" @click="agregarAlCarrito(product)">
               Comprar
             </button>
             <button class="btn btn-secondary" @click="goToCart">
@@ -45,7 +45,7 @@ export default {
     fetchProducts() {
       // Hacer la llamada a tu API utilizando Axios
       axios
-        .get("http://127.0.0.1:8000/api/v1.0/productos")
+        .get("http://exoticshoes.pythonanywhere.com/api/v1.0/productos")
         .then((response) => {
           this.products = response.data;
           console.log(response.data);
@@ -54,9 +54,8 @@ export default {
           console.error(error);
         });
     },
-    addToCart(product) {
-      // Lógica para agregar el producto al carrito
-      console.log("Producto agregado al carrito:", product);
+    agregarAlCarrito(producto) {
+      this.$emit('agregar-producto', producto);
     },
     goToCart() {
       // Lógica para redirigir al carrito
