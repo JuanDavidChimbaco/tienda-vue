@@ -21,7 +21,9 @@
           :key="index"
           :class="{ active: index === currentSlide }"
         >
-          <img :src="slide.image" class="d-block w-100" :alt="`Slide ${index + 1}`" />
+        <div class="d-flex justify-content-around">
+          <img :src="slide.image" class="d-block" :alt="`Slide ${index + 1}`" height="550" width="2000"/>
+        </div>
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
