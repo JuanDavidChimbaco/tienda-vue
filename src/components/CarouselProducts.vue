@@ -1,11 +1,11 @@
 <template>
-    <div class="container mt-4">
+    <div class="container">
         <div class="carousel">
             <h1>Ofertas</h1>
             <div class="carousel-inner" style="overflow-x: hidden;">
-                <div class="carousel-item" v-for="(product, index) in products" :key="product.id"
-                    :class="{ active: index === activeIndex }">
-                    <div class="card mb-4 shadow-sm rounded">
+                <div class="carousel-item rounded" v-for="(product, index) in products" :key="product.id"
+                    :class="{ active: index === activeIndex }" >
+                    <div class="card shadow-sm rounded p-1 m-auto">
                         <div class="image-container">
                             <img :src="product.foto" class="card-img-top foto" alt="Product Image" />
                         </div>
