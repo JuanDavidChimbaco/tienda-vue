@@ -1,10 +1,10 @@
 <template>
-  <div class="carrito">
+  <div class="carrito" v-if="carrito.length > 0"> <!-- Verifica si se han cargado los productos -->
     <h2>Carrito de Compras</h2>
     <ul>
-      <li v-for="producto in productos" :key="producto.id">
+      <li v-for="producto in carrito" :key="producto.id">
         {{ producto.nombre }} - ${{ producto.precio }}
-        <button @click="eliminarProducto(producto.id)">Eliminar</button>
+        <button @click="eliminarDelCarrito(producto.id)">Eliminar</button>
       </li>
     </ul>
     <p>Total: ${{ calcularTotal() }}</p>
@@ -13,20 +13,18 @@
 
 <script>
 export default {
-  data() {
-    return {
-      productos: [], // Lista de productos agregados al carrito
-    };
+  props: {
+    carrito: {
+      type: Array,
+      default: () => [],
+    },
   },
   methods: {
-    agregarProducto(producto) {
-      this.productos.push(producto);
-    },
-    eliminarProducto(idProducto) {
-      this.productos = this.productos.filter((producto) => producto.id !== idProducto);
+    eliminarDelCarrito(idProducto) {
+      this.$emit("eliminar-del-carrito", idProducto);
     },
     calcularTotal() {
-      return this.productos.reduce((total, producto) => total + producto.precio, 0);
+      return this.carrito.reduce((total, producto) => total + producto.precio, 0);
     },
   },
 };
