@@ -1,5 +1,5 @@
 <template>
-  <div class="carrito" v-if="carrito.length > 0"> <!-- Verifica si se han cargado los productos -->
+  <div :class="show? 'carrito-mostrar': ''" v-if="carrito.length > 0"> <!-- Verifica si se han cargado los productos -->
     <h2>Carrito de Compras</h2>
     <ul>
       <li v-for="producto in carrito" :key="producto.id">
@@ -17,6 +17,10 @@ export default {
     carrito: {
       type: Array,
       default: () => [],
+    },
+    show: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
@@ -44,7 +48,7 @@ export default {
   transition: right 0.3s ease; /* Agregamos una transición suave para animar la aparición/desaparición del carrito */
 }
 
-.carrito.mostrar {
+.carrito-mostrar {
   right: 0; /* Cuando la clase "mostrar" está presente, el carrito se desplaza hacia la posición derecha 0 */
 }
 </style>

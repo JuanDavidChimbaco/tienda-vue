@@ -20,7 +20,7 @@
     </main>
 
     <FooterComponent />
-    <carrito :carrito="carrito" @eliminar-del-carrito="eliminarDelCarrito" />
+    <CartComponent :show="mostrarCarrito" :carrito="carrito" @eliminar-del-carrito="eliminarDelCarrito" />
 
     <InicioSesion v-if="mostrarIniciarSesion" />
   </div>
@@ -35,7 +35,7 @@ import CarouselComponent from "./components/CarouselComponent.vue";
 import CarouselProducts from "./components/CarouselProducts.vue";
 import ComentariosComponent from "./components/ComentariosComponent.vue";
 import InicioSesion from "@/components/InicioSesionComponent";
-import Carrito from "@/components/CartComponent.vue";
+import CartComponent from "@/components/CartComponent.vue";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
@@ -53,7 +53,7 @@ export default {
     CarouselProducts,
     ComentariosComponent,
     InicioSesion,
-    Carrito,
+    CartComponent,
   },
   data() {
     return {
